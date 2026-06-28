@@ -71,7 +71,7 @@ while True:
             filter_frequency = input('Enter frequency (MHz):  ')
             if filter_frequency in ['back', 'menu', 'quit']:
                 break
-            filtered_df = filtered_df[filtered_df['frequency_mhz']]
+            filtered_df = filtered_df[filtered_df['frequency_mhz'] == float(filter_frequency)]
             filtered_df, success = cs.stop_filter(sigint_df, filtered_df, 'frequency_mhz', filter_frequency, filters)
             if success:
                 break
