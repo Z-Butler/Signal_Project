@@ -99,22 +99,21 @@ def print_filtered(filtered_df, filters):
   Emitters:     {emitters}
   Modulation:   {modulation}
   Site:         {sites}
-  Filters:      {', '.join(filters.values()) if filters else 'None'}
+  Filters:      {f', '.join(filters.values()) if filters else 'None'}
 {'=' * 45}""")
 
 
 def stop_filter(original_dataframe, filtered_dataframe, filtered_column, filter_var, filter_dict):
     """         Stops filter from applying if 0 matches are found.          """
     if len(filtered_dataframe) == 0:
-        while True:
-            print(f"No matching results for {filter_var}")
-            filtered_dataframe = original_dataframe
-            for column, value in filter_dict.items():
-                filtered_dataframe = filtered_dataframe[filtered_dataframe[column] == value]
-            return filtered_dataframe
+        print(f"\nNo matching results for {filter_var}")
+        filtered_dataframe = original_dataframe
+        for column, value in filter_dict.items():
+            filtered_dataframe = filtered_dataframe[filtered_dataframe[column] == value]
+        return filtered_dataframe, False
     else:
         filter_dict[filtered_column] = filter_var
-        return filtered_dataframe
+        return filtered_dataframe, True
 
 
 def stop_filter_time(original_dataframe, filtered_dataframe, filter_hour, filter_min, filter_dict):
