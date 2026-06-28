@@ -1,4 +1,3 @@
-[README.md](https://github.com/user-attachments/files/29445364/README.md)
 # SIGINT Signal Collection & Analysis Tool
 
 A CLI tool for filtering and visualizing RF signal collection data. Takes SIGINT data from a CSV, lets you filter it down by various parameters, and outputs an interactive HTML map with collection sites and lines of bearing.
