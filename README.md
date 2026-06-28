@@ -91,10 +91,3 @@ Generated maps include collection site markers, lines of bearing from each site,
 | `site_name` | collection site |
 | `collection_lat` / `collection_lon` | site coordinates |
 | `snr_db` | signal-to-noise ratio |
-
----
-
-## Known Issues
-
-- Site filter (option `7`) requires an exact string match including country (e.g. `Sigonella, Italy`)
-- Remove filter (option `11`) doesn't handle the `time` key correctly when other filters are active
