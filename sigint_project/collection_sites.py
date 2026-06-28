@@ -116,3 +116,17 @@ def stop_filter(original_dataframe, filtered_dataframe, filtered_column, filter_
         filter_dict[filtered_column] = filter_var
         return filtered_dataframe
 
+
+def stop_filter_time(original_dataframe, filtered_dataframe, filter_hour, filter_min, filter_dict):
+    """         Special function for time.
+                Stops filter from applying if 0 matches are found.          """
+    if len(filtered_dataframe) == 0:
+        print(f"\nNo matching results for {filter_hour}{filter_min}")
+        filtered_dataframe = original_dataframe
+        for column, value in filter_dict.items():
+            filtered_dataframe = filtered_dataframe[(filtered_dataframe['hour'] == int(filter_hour)) &
+                                                    (filtered_dataframe['minute'] == int(filter_min))]
+        return filtered_dataframe, False
+    else:
+        filter_dict['time'] = f'{filter_hour}{filter_min}'
+        return filtered_dataframe, True
