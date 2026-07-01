@@ -123,8 +123,7 @@ def stop_filter_time(original_dataframe, filtered_dataframe, filter_hour, filter
         print(f"\nNo matching results for {filter_hour}{filter_min}")
         filtered_dataframe = original_dataframe
         for column, value in filter_dict.items():
-            filtered_dataframe = filtered_dataframe[(filtered_dataframe['hour'] == int(filter_hour)) &
-                                                    (filtered_dataframe['minute'] == int(filter_min))]
+            filtered_dataframe = filtered_dataframe[filtered_dataframe[column] == value]
         return filtered_dataframe, False
     else:
         filter_dict['time'] = f'{filter_hour}{filter_min}'
