@@ -65,7 +65,10 @@ class DataFilter:
         self.filtered_dataframe = self.original_dataframe
 
     def remove_filter(self, filter_variable):
-        self.filters.pop(filter_variable)
-        self.filtered_dataframe = self.original_dataframe
-        for column, value in self.filters.items():
-            self.filtered_dataframe = self.filtered_dataframe[self.filtered_dataframe[column] == value]
+        if filter_variable in self.filters:
+            self.filters.pop(filter_variable)
+            self.filtered_dataframe = self.original_dataframe
+            for column, value in self.filters.items():
+                self.filtered_dataframe = self.filtered_dataframe[self.filtered_dataframe[column] == value]
+        else:
+            print(f'{filter_variable} filter not applied.')
